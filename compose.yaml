@@ -11,7 +11,14 @@ services:
       - DB_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
       - db
-      
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+
   db:
     image: postgres:15-alpine
     environment:
